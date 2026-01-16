@@ -16,4 +16,31 @@ class HashMap {
 
     return hashCode;
   }
+
+  set(key, value) {
+    const index = this.hash(key);
+
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error('Trying to access index out of bounds');
+    }
+
+    if (this.buckets[index] === null) {
+      this.buckets[index] = [{ key, value }];
+      this.size++;
+    } else {
+      for (let pair of this.buckets[index]) {
+        if (pair.key === key) {
+          pair.value = value;
+          return;
+        }
+      }
+
+      this.buckets[index].push({ key, value });
+      this.size++;
+    }
+
+    if (this.size / this.capacity > this.loadFactor) {
+      this.resize();
+    }
+  }
 }
