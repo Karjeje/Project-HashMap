@@ -155,4 +155,20 @@ class HashMap {
 
     return entries;
   }
+
+  resize() {
+    const oldBuckets = this.buckets;
+
+    this.capacity *= 2;
+    this.buckets = new Array(this.capacity).fill(null);
+    this.size = 0;
+
+    for (const bucket of oldBuckets) {
+      if (!bucket) continue;
+
+      for (const { key, value } of bucket) {
+        this.set(key, value);
+      }
+    }
+  }
 }
