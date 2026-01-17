@@ -116,4 +116,30 @@ class HashMap {
     this.buckets = new Array(this.capacity).fill(null);
     this.size = 0;
   }
+
+  keys() {
+    let keys = [];
+
+    for (let bucket of this.buckets) {
+      if (bucket !== null)
+        for (let pair of bucket) {
+          keys.push(pair.key);
+        }
+    }
+
+    return keys;
+  }
+
+  values() {
+    let values = [];
+
+    for (let bucket of this.buckets) {
+      if (bucket !== null)
+        for (let pair of bucket) {
+          values.push(pair.value);
+        }
+    }
+
+    return values;
+  }
 }
