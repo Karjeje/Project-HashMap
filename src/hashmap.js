@@ -65,4 +65,24 @@ class HashMap {
 
     return null;
   }
+
+  has(key) {
+    const index = this.hash(key);
+
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error('Trying to access index out of bounds');
+    }
+
+    const bucket = this.buckets[index];
+
+    if (!bucket) return false;
+
+    for (const pair of bucket) {
+      if (pair.key === key) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
