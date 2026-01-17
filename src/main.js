@@ -1,4 +1,5 @@
 import HashMap from './hashmap.js';
+import HashSet from './hashset.js';
 
 const test = new HashMap();
 
@@ -51,3 +52,9 @@ console.log('has dog:', test.has('dog'));
 console.log('keys:', test.keys());
 console.log('values:', test.values());
 console.log('entries:', test.entries());
+
+//Test HashSet
+const test2 = new HashSet();
+test2.set('example');
+console.log('set:', test2.keys());
+console.log('size:', test2.length());
