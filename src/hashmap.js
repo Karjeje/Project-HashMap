@@ -85,4 +85,25 @@ class HashMap {
 
     return false;
   }
+
+  remove(key) {
+    const index = this.hash(key);
+
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error('Trying to access index out of bounds');
+    }
+
+    const bucket = this.buckets[index];
+
+    if (!bucket) return false;
+
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i].key === key) {
+        bucket.splice(i, 1);
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
