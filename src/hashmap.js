@@ -142,4 +142,17 @@ class HashMap {
 
     return values;
   }
+
+  entries() {
+    const entries = [];
+
+    for (let bucket of this.buckets) {
+      if (bucket !== null)
+        for (let pair of bucket) {
+          entries.push([pair.key, pair.value]);
+        }
+    }
+
+    return entries;
+  }
 }
