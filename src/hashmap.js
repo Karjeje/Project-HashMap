@@ -100,6 +100,7 @@ class HashMap {
     for (let i = 0; i < bucket.length; i++) {
       if (bucket[i].key === key) {
         bucket.splice(i, 1);
+        this.size--;
         return true;
       }
     }
